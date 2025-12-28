@@ -1,0 +1,2 @@
+# Kubeflow Pipelines SDK
+kfp==2.15.2
