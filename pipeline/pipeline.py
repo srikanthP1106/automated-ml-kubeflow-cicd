@@ -1,24 +1,28 @@
 from kfp import dsl, compiler
 
 
-@dsl.component
+@dsl.component(base_image="python:3.10")
+
 def preprocess():
     print("Preprocessing data")
 
 
-@dsl.component
+@dsl.component(base_image="python:3.10")
+
 def train():
     print("Training model")
 
 
-@dsl.component
+@dsl.component(base_image="python:3.10")
+
 def evaluate():
     print("Evaluating model")
 
 
 @dsl.pipeline(
     name="Automated ML CI/CD Pipeline",
-    description="Preprocess → Train → Evaluate"
+    description="Preprocess -> Train -> Evaluate"
+
 )
 def ml_pipeline():
     p = preprocess()
